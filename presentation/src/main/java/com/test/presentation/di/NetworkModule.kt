@@ -1,13 +1,13 @@
 package com.test.presentation.di
 
 import com.test.data.executor.JobExecutor
-import com.test.data.remote.RoutesApi
+import com.test.data.remote.SmartBoxApi
 import com.test.domain.executor.PostExecutionThread
 import com.test.domain.executor.ThreadExecutor
 import com.test.presentation.App
 import com.test.presentation.BuildConfig
 import com.test.presentation.base.UiThread
-import com.test.presentation.common.Constants.Network.rotApiBaseUrl
+import com.test.presentation.common.Constants.Network.appApiBaseUrl
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -36,7 +36,7 @@ class NetworkModule (var app: App){
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-            .baseUrl(rotApiBaseUrl)
+            .baseUrl(appApiBaseUrl)
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -53,7 +53,7 @@ class NetworkModule (var app: App){
 
 
     @Provides
-    fun provideRoutesApi(retrofit: Retrofit): RoutesApi = retrofit.create(RoutesApi::class.java)
+    fun provideRoutesApi(retrofit: Retrofit): SmartBoxApi = retrofit.create(SmartBoxApi::class.java)
 
 
     companion object {

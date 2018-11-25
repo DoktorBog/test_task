@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Ride On Time</string>
+    <string name="app_name">Android World</string>
+    <string name="events">events</string>
+    <string name="shops">shops</string>
 </resources>

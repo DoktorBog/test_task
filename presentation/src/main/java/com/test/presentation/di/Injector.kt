@@ -2,6 +2,7 @@ package com.test.presentation.di
 
 import com.test.presentation.App
 import com.test.presentation.main.MainActivity
+import com.test.presentation.main.PageFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -12,5 +13,7 @@ interface Injector {
     fun inject(app: App)
 
     fun inject(activity: MainActivity)
+
+    fun inject(fragment: PageFragment)
 
 }

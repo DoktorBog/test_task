@@ -1,7 +1,7 @@
 package com.test.presentation.di
 
-import com.test.data.repository.RouteRepositoryImpl
-import com.test.domain.repository.RoutesRepository
+import com.test.data.repository.SmartBoxRepositoryImpl
+import com.test.domain.repository.SmartBoxRepository
 import dagger.Binds
 import dagger.Module
 
@@ -9,7 +9,7 @@ import dagger.Module
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun bindRoutesRepository(repository: RouteRepositoryImpl): RoutesRepository
+    abstract fun bindRoutesRepository(repository: SmartBoxRepositoryImpl): SmartBoxRepository
 
 
 }
