@@ -2,4 +2,6 @@
     <string name="app_name">Android World</string>
     <string name="events">events</string>
     <string name="shops">shops</string>
+    <string name="loading">Loading</string>
+    <string name="please_wait">Please wait ...</string>
 </resources>

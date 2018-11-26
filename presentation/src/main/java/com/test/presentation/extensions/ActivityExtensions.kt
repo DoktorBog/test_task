@@ -1,18 +1,21 @@
 package com.test.presentation.extensions
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.annotation.DrawableRes
 import android.support.annotation.StringRes
+import android.support.annotation.StyleRes
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.test.presentation.R
 import org.jetbrains.anko.bundleOf
 import org.jetbrains.anko.contentView
 
@@ -129,3 +132,22 @@ fun Activity.indefiniteSnackbar(@StringRes
                                 view: View = this.contentView!!,
                                 additionalConfigs: (Snackbar.() -> Unit)? = null) =
         snackbar(messageRes, view, Snackbar.LENGTH_INDEFINITE, additionalConfigs)
+
+
+@Suppress("DEPRECATION")
+inline fun Activity.lazyProgressDialog(@StyleRes themeRes: Int? = null,
+                                       @StringRes titleRes: Int = R.string.loading,
+                                       @StringRes messageRes: Int = R.string.please_wait,
+                                       isCancelable: Boolean = false): Lazy<ProgressDialog> =
+        lazy { newProgressDialog(this, themeRes, titleRes, messageRes, isCancelable) }
+
+inline fun newProgressDialog(context: Context,
+                             @StyleRes themeRes: Int? = null,
+                             @StringRes titleRes: Int = R.string.loading,
+                             @StringRes messageRes: Int = R.string.please_wait,
+                             isCancelable: Boolean = false): ProgressDialog =
+        (themeRes?.let { ProgressDialog(context, it) } ?: ProgressDialog(context)).apply {
+            setTitle(titleRes)
+            setMessage(context.getString(messageRes))
+            setCancelable(isCancelable)
+        }
